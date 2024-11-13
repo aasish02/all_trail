@@ -1,0 +1,113 @@
+/// Jenkins for windows:
+
+needed: Jenkins.war,java jdk(17 or 21 not 19)
+command : java -jar jenkins.war --enable-future-java (in cmd )
+
+if git is newly installed then
+
+	1) run the above command
+	2) goto the respective localhost
+	3) find the git.exe file path at C:/
+	4) Manage Jenkins --> Tools --> paste the copied git.exe path in "path_to_executable_git"
+
+
+execute this command in window bash:
+	javac filename.java
+	java  filename
+
+/// Docker in Ubuntu
+
+ docker installation:
+
+	1.sudo apt update
+	2.sudo apt install docker.io
+	3.sudo systemctl start docker
+	4.sudo systemctl enable docker
+
+to build docker image:
+	5.sudo docker build -t image_name
+
+to run :
+	6.docker run -d -p 5000:5000 image_name
+
+
+if permission denied occurs in building image
+
+	1) move to main directory
+	2) cd /var
+	3) sudo chmod 666 /var/run/docker.sock
+
+again execute build docker image and run command
+
+
+
+/// if docker push and pull is asked in question
+
+in cmd:
+
+docker login
+username:
+password:
+docker build -t repo_name/image_name .
+docker run -p 5000:5000 repo_name/image_name
+docker push repo_name/image_name
+docker pull repo_name/image_name
+
+
+/// SSH Command
+
+username : whoami
+ip_address command: hostname -I
+
+1.ssh-keygen -t rsa -b 2048
+2.ssh-copy-id username@ip_address error --> sudo apt install openssh-server
+3.ssh-copy-id username@ip_address
+4.ssh username@ip_address
+5.ls
+6.bash filename.sh 
+
+/// if file manuplation question then download filemanipulation.sh from tinyurl in which device you are going to connect,then normal ssh and execute bash filemanipulation.sh
+
+
+/// Merge Conflict
+
+create a repo in your git
+
+git clone "git link"
+
+
+echo 'public class Demo {
+    public static void main(String[] args) {
+        System.out.println("Original code");
+    }
+}' > Demo.java
+
+
+git add Demo.java
+git commit -m "Initial commit"
+
+git checkout -b feature-branch
+
+change :System.out.println("Feature branch modification");
+
+git add Demo.java
+git commit -m "Modify Demo.java in feature-branch"
+
+git checkout main
+
+again change:System.out.println("Main branch modification");
+
+git add Demo.java
+git commit -m "Modify Demo.java in main branch"
+
+git merge feature-branch
+
+then merge conflicts occurs which is shown in terminal
+
+git add .
+git commit -m "new msg"
+git push origin main
+
+
+
+
